@@ -15,203 +15,7 @@
     angular.module('hbUi.geo').factory('hbGeoLeafletService', [
        '$log', 'hbGeoService', function($log, hbGeoService) {
 
-    	   // =================================================================
-    	   //     Leaflet configuration objects
-    	   //     Might move in a hbGeoConfig service in the future 
-    	   // =================================================================
-
-           /**
-            * Provides default for angular-leaflet-directive variables 
-            * extending controllers using leaflet.
-            */
-           var getDefaultLeafletScopeVars = function() {
-        	 
-        	   var defaultLeafletAdditionToScope = {
-					iconStyles: {
-						selectedMarker: getSelectedObjectMarkerStyle(),
-						standardMarker: getStandardObjectMarkerStyle()
-					},
-					center: {
-						lat: 0,
-						lng: 0,
-						zoom: 10
-					},
-					defaults: {
-						drawControl: true
-					},
-					layers: {
-						baselayers: {
-							standard: {
-								name: 'Standard',
-								url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-								type: 'xyz'
-							}
-					   // Image overlay test (WIP. GIS funct. dev.)
-					//                   		,
-					//                           gespatri: {
-					//                               name: 'Gespatri',
-					//                               type: 'imageOverlay',
-					//                               url: '/assets/images/abribus.jpeg',
-					//                               bounds: [[46.992737010038404, 6.931471483187033], [46.99302251894073, 6.931947239697114]],
-					//                               //{"_southWest":{"lat":46.992737010038404,"lng":6.931471483187033},"_northEast":{"lat":46.99302251894073,"lng":6.931947239697114}}
-					//                               layerParams: {
-					//                                 noWrap: true,
-					//                                 attribution: 'Custom map <a href="http://www.bsisa.ch/">by BSI SA</a>'
-					//                               }
-					//                           }
-							,
-							transport: {
-								name: 'Transport',
-								url: 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
-								type: 'xyz'
-							}
-					//                   		,
-					//                         landscape: {
-					//                             name: 'Paysage',
-					//                             url: 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
-					//                             type: 'xyz'
-					//                         },
-					//                         grayscale: {
-					//                             name: 'Routes - Gris',
-					//                             url: 'http://openmapsurfer.uni-hd.de/tiles/roadsg/x={x}&y={y}&z={z}',
-					//                             type: 'xyz'
-					//                         },
-					//                         watercoloe: {
-					//                             name: 'Aquarelle',
-					//                             url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
-					//                             type: 'xyz'
-					//                         },                        
-					
-						},
-						overlays: {
-						}
-					}
-        	   };
-        	   
-        	   // Hack: Serialisation prevents modification by reference, but breaks
-        	   // $scope.drawControl.draw.marker.icon definition in caller i.e. hbMapController
-        	   //return angular.fromJson(angular.toJson(defaultLeafletAdditionToScope));
-        	   return defaultLeafletAdditionToScope;
-           };
-           
-           
-           /**
-            * Returns tooltips, buttons, actions, toolbar,... labels translated
-            * properties to extend/merge with L.drawLocal. 
-            * 
-            * (Currently hardcoded to french only, can be extended to database 
-            * configured per language locale as needed).
-            */
-           var getDrawLocalTranslation = function() {
-        	   
-        	   var drawLocalTranslation_fr = {
-								               draw: {
-								                   toolbar: {
-								                       actions: {
-								                           title: 'Annuler le dessin',
-								                           text: 'Annuler'
-								                       },
-								                       undo : {
-								                           title: 'Effacer le dernier point dessiné',
-								                           text: 'Effacer le dernier point'
-								                       },
-								                       buttons: {
-								                           polyline: 'Dessiner une polyligne',
-								                           polygon: 'Dessiner un polygone',
-								                           marker: 'Dessiner un point',
-								                           rectangle: 'Draw a rectangle',
-								                           circle: 'Draw a circle'
-								                       }
-								                   },
-								                   handlers: {
-								                       circle: {
-								                           tooltip: {
-								                               start: 'Click and drag to draw circle.'
-								                           }
-								                       },
-								                       rectangle: {
-								                           tooltip: {
-								                               start: 'Click and drag to draw rectangle.'
-								                           }
-								                       },
-								                       simpleshape: {
-								                           tooltip: {
-								                               end: 'Release mouse to finish drawing.'
-								                           }
-								                       },
-								                       marker: {
-								                           tooltip: {
-								                               start: 'Click sur le plan pour placer un point.'
-								                           }
-								                       },
-								                       polygon: {
-								                           tooltip: {
-								                               start: 'Click pour commencer à dessiner la forme.',
-								                               cont: 'Click pour continuer de dessiner.',
-								                               end: 'Click sur le premier point pour fermer la forme.'
-								                           }
-								                       },
-								                       polyline: {
-								                           error: '<strong>Erreur:</strong> les côtés ne peuvent pas se croiser!',
-								                           tooltip: {
-								                               start: 'Click pour commencer à dessiner la ligne.',
-								                               cont: 'Click pour continuer de dessiner.',
-								                               end: 'Click sur le dernier point pour terminer.'
-								                           }
-								                       }
-								                   }
-								               },
-								               edit: {
-								                   toolbar: {
-								                       actions: {
-								                           save: {
-								                               title: 'Save changes.',
-								                               text: 'Save'
-								                           },
-								                           cancel: {
-								                               title: 'Cancel editing, discards all changes.',
-								                               text: 'Cancel'
-								                           }
-								                       },
-								                       buttons: {
-								                           edit: 'Edit layers.',
-								                           editDisabled: 'No layers to edit.',
-								                           remove: 'Delete layers.',
-								                           removeDisabled: 'No layers to delete.'
-								                       }
-								                   },
-								                   handlers: {
-								                       edit: {
-								                           tooltip: {
-								                               text: 'Drag handles, or marker to edit feature.',
-								                               subtext: 'Click cancel to undo changes.'
-								                           }
-								                       },
-								                       remove: {
-								                           tooltip: {
-								                               text: 'Click on a feature to remove'
-								                           }
-								                       }
-								                   }
-								               }
-								           };
-
-        	   return drawLocalTranslation_fr;
-           };    	   
-    	   
-           
-           /**
-            * TODO: This is not generic: Re-design and refactor. 
-            * (I.e.: Have template per CLASSE and template list loaded from database at startup.)
-            * Microservice architecture: => geo database accessed by hbGeoService...
-            */
-           var getPopupContent = function(elfin) {
-               var popup = '<b>' + elfin.IDENTIFIANT.NOM + ' ' + elfin.IDENTIFIANT.ALIAS + '</b><br>';
-               popup += 'No SAI <b>' + elfin.IDENTIFIANT.OBJECTIF + '</b> - ' + elfin.CLASSE + '<br>';
-               popup += '<a href="/elfin/' + elfin.ID_G + '/' + elfin.CLASSE + '/' + elfin.Id + '">Détails</a>';
-               return popup;
-           };            
-    	   
+   	   
     	   // =================================================================
     	   //     Leaflet objects from/to GeoXml utilities
     	   // =================================================================           
@@ -408,6 +212,205 @@
                    }
                }
            };
+           
+
+    	   // =================================================================
+    	   //     Leaflet configuration objects
+    	   //     Might move in a hbGeoConfig service in the future 
+    	   // =================================================================
+
+           /**
+            * Provides default for angular-leaflet-directive variables 
+            * extending controllers using leaflet.
+            */
+           var getDefaultLeafletScopeVars = function() {
+        	 
+        	   var defaultLeafletAdditionToScope = {
+					iconStyles: {
+						selectedMarker: getSelectedObjectMarkerStyle(),
+						standardMarker: getStandardObjectMarkerStyle()
+					},
+					center: {
+						lat: 0,
+						lng: 0,
+						zoom: 10
+					},
+					defaults: {
+						drawControl: true
+					},
+					layers: {
+						baselayers: {
+							standard: {
+								name: 'Standard',
+								url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+								type: 'xyz'
+							}
+					   // Image overlay test (WIP. GIS funct. dev.)
+					//                   		,
+					//                           gespatri: {
+					//                               name: 'Gespatri',
+					//                               type: 'imageOverlay',
+					//                               url: '/assets/images/abribus.jpeg',
+					//                               bounds: [[46.992737010038404, 6.931471483187033], [46.99302251894073, 6.931947239697114]],
+					//                               //{"_southWest":{"lat":46.992737010038404,"lng":6.931471483187033},"_northEast":{"lat":46.99302251894073,"lng":6.931947239697114}}
+					//                               layerParams: {
+					//                                 noWrap: true,
+					//                                 attribution: 'Custom map <a href="http://www.bsisa.ch/">by BSI SA</a>'
+					//                               }
+					//                           }
+							,
+							transport: {
+								name: 'Transport',
+								url: 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
+								type: 'xyz'
+							}
+					//                   		,
+					//                         landscape: {
+					//                             name: 'Paysage',
+					//                             url: 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
+					//                             type: 'xyz'
+					//                         },
+					//                         grayscale: {
+					//                             name: 'Routes - Gris',
+					//                             url: 'http://openmapsurfer.uni-hd.de/tiles/roadsg/x={x}&y={y}&z={z}',
+					//                             type: 'xyz'
+					//                         },
+					//                         watercoloe: {
+					//                             name: 'Aquarelle',
+					//                             url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+					//                             type: 'xyz'
+					//                         },                        
+					
+						},
+						overlays: {
+						}
+					}
+        	   };
+        	   
+        	   // Hack: Serialisation prevents modification by reference, but breaks
+        	   // $scope.drawControl.draw.marker.icon definition in caller i.e. hbMapController
+        	   //return angular.fromJson(angular.toJson(defaultLeafletAdditionToScope));
+        	   return defaultLeafletAdditionToScope;
+           };
+           
+           
+           /**
+            * Returns tooltips, buttons, actions, toolbar,... labels translated
+            * properties to extend/merge with L.drawLocal. 
+            * 
+            * (Currently hardcoded to french only, can be extended to database 
+            * configured per language locale as needed).
+            */
+           var getDrawLocalTranslation = function() {
+        	   
+        	   var drawLocalTranslation_fr = {
+								               draw: {
+								                   toolbar: {
+								                       actions: {
+								                           title: 'Annuler le dessin',
+								                           text: 'Annuler'
+								                       },
+								                       undo : {
+								                           title: 'Effacer le dernier point dessiné',
+								                           text: 'Effacer le dernier point'
+								                       },
+								                       buttons: {
+								                           polyline: 'Dessiner une polyligne',
+								                           polygon: 'Dessiner un polygone',
+								                           marker: 'Dessiner un point',
+								                           rectangle: 'Draw a rectangle',
+								                           circle: 'Draw a circle'
+								                       }
+								                   },
+								                   handlers: {
+								                       circle: {
+								                           tooltip: {
+								                               start: 'Click and drag to draw circle.'
+								                           }
+								                       },
+								                       rectangle: {
+								                           tooltip: {
+								                               start: 'Click and drag to draw rectangle.'
+								                           }
+								                       },
+								                       simpleshape: {
+								                           tooltip: {
+								                               end: 'Release mouse to finish drawing.'
+								                           }
+								                       },
+								                       marker: {
+								                           tooltip: {
+								                               start: 'Click sur le plan pour placer un point.'
+								                           }
+								                       },
+								                       polygon: {
+								                           tooltip: {
+								                               start: 'Click pour commencer à dessiner la forme.',
+								                               cont: 'Click pour continuer de dessiner.',
+								                               end: 'Click sur le premier point pour fermer la forme.'
+								                           }
+								                       },
+								                       polyline: {
+								                           error: '<strong>Erreur:</strong> les côtés ne peuvent pas se croiser!',
+								                           tooltip: {
+								                               start: 'Click pour commencer à dessiner la ligne.',
+								                               cont: 'Click pour continuer de dessiner.',
+								                               end: 'Click sur le dernier point pour terminer.'
+								                           }
+								                       }
+								                   }
+								               },
+								               edit: {
+								                   toolbar: {
+								                       actions: {
+								                           save: {
+								                               title: 'Save changes.',
+								                               text: 'Save'
+								                           },
+								                           cancel: {
+								                               title: 'Cancel editing, discards all changes.',
+								                               text: 'Cancel'
+								                           }
+								                       },
+								                       buttons: {
+								                           edit: 'Edit layers.',
+								                           editDisabled: 'No layers to edit.',
+								                           remove: 'Delete layers.',
+								                           removeDisabled: 'No layers to delete.'
+								                       }
+								                   },
+								                   handlers: {
+								                       edit: {
+								                           tooltip: {
+								                               text: 'Drag handles, or marker to edit feature.',
+								                               subtext: 'Click cancel to undo changes.'
+								                           }
+								                       },
+								                       remove: {
+								                           tooltip: {
+								                               text: 'Click on a feature to remove'
+								                           }
+								                       }
+								                   }
+								               }
+								           };
+
+        	   return drawLocalTranslation_fr;
+           };    	   
+    	   
+           
+           /**
+            * TODO: This is not generic: Re-design and refactor. 
+            * (I.e.: Have template per CLASSE and template list loaded from database at startup.)
+            * Microservice architecture: => geo database accessed by hbGeoService...
+            */
+           var getPopupContent = function(elfin) {
+               var popup = '<b>' + elfin.IDENTIFIANT.NOM + ' ' + elfin.IDENTIFIANT.ALIAS + '</b><br>';
+               popup += 'No SAI <b>' + elfin.IDENTIFIANT.OBJECTIF + '</b> - ' + elfin.CLASSE + '<br>';
+               popup += '<a href="/elfin/' + elfin.ID_G + '/' + elfin.CLASSE + '/' + elfin.Id + '">Détails</a>';
+               return popup;
+           };
+           
            
            return {
            	   getDefaultLeafletScopeVars: getDefaultLeafletScopeVars,
