@@ -24,7 +24,7 @@
          */		
 		var getElfinBasePoint = function(elfin) {
 
-			if (!elfin.FORME) return null;
+			if (!elfin || !elfin.FORME) return null;
 
 			var point = null;               
 
