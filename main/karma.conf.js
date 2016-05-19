@@ -3,7 +3,7 @@
 
 module.exports = function(config) {
   config.set({
-
+	  
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
@@ -15,8 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/**/*Spec.js',
-      'test/**/*.spec.js',
+      'bower_components/angular/angular.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'dist/hbUi.geo-0.0.1.js',
+    //  'src/*.js',
       'test/**/*.spec.js'
     ],
 
