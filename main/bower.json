@@ -14,7 +14,7 @@
     "geoxml",
     "hyperbird",
     "GIS",
-    "Geo",
+    "Geo"
   ],
   "license": "Apache 2.0",
   "ignore": [
