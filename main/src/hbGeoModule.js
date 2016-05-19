@@ -20,7 +20,9 @@
 	 * Turns debug log level on and off
 	 */
     angular.module('hbUi.geo').config(['$logProvider', function($logProvider) {
-        $logProvider.debugEnabled(clientDebugEnabled);
+        //TODO: Find out how to pass clientDebugEnabled reference to mock for tests.
+    	//$logProvider.debugEnabled(clientDebugEnabled);
+        $logProvider.debugEnabled(true);
     }]);
 
     
