@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'test/conf.js',
       'dist/hbUi.geo-0.0.1.js',
     //  'src/*.js',
       'test/**/*.spec.js'
