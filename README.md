@@ -71,3 +71,10 @@ This should output something like:
     >> 1 file created. 0 B → 0 B
     
     Done.
+
+
+Other useful grunt tasks are: 
+
+    grunt karma:unit
+    grunt karma:ci
+
