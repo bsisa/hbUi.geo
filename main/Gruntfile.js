@@ -7,11 +7,12 @@ module.exports = function(grunt) {
 
         karma: {
             unit: {
-                configFile: 'test/karma-unit.js',
-                // run karma in the background
-                background: true,
-                // which browsers to run the tests on
-                browsers: ['Chrome', 'Firefox']
+                configFile: 'karma.conf.js'
+//                	,
+//                // run karma in the background
+//                background: true,
+//                // which browsers to run the tests on
+//                browsers: ['Chrome', 'Firefox']
             }
         },
 
