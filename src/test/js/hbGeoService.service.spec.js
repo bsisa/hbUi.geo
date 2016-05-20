@@ -1,5 +1,5 @@
 
-describe('coordinatesConversions', function() {
+describe('Coordinates conversions', function() {
 
 	beforeEach(function() {
 		module('hbUi.geo')
@@ -13,7 +13,7 @@ describe('coordinatesConversions', function() {
 		hbGeoService = _hbGeoService_;
 	}));
 
-	it('point1 should equal point1bis both in swiss federal coordinates',
+	it('point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates',
 			function() {
 
 				var point1 = {
@@ -25,10 +25,9 @@ describe('coordinatesConversions', function() {
 				var point1bis = hbGeoService.getSwissFederalCoordinates(
 						latLng1.lat, latLng1.lng);
 
-				// expect(point1bis.lat).toBe(point1.lat);
-				expect(point1bis.lat).toEqual(point1.lat);
-				// expect(point1bis.lng).toBe(point1.lng);
-				expect(point1bis.lng).toEqual(point1.lng);
+				expect(point1bis.x).toEqual(point1.x);
+				expect(point1bis.y).toEqual(point1.y);
+				
 			});
 
 });
