@@ -41,10 +41,10 @@ module.exports = function(config) {
     reporters: ['progress', 'html'],
     
     htmlReporter: {
-      outputFile: 'tests/units.html',
+      outputFile: 'target/test-reports/hbUi.geo.units.html',
 			
       // Optional 
-      pageTitle: 'Unit Tests',
+      pageTitle: 'hbUi.geo Tests',
       subPageTitle: 'hbUi.geo AngularJS module provides GIS JS client functionalities relying on hb-geo-api microservice.'
     },    
 

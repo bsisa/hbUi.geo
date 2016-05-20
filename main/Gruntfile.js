@@ -1,19 +1,26 @@
+// 
+// Check: https://github.com/karma-runner/grunt-karma 
+// for configurations related to karma.
+//
 module.exports = function(grunt) {
-
+	
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-
+        // Configure tests using karma
         karma: {
             unit: {
-                configFile: 'karma.conf.js'
-//                	,
-//                // run karma in the background
-//                background: true,
-//                // which browsers to run the tests on
-//                browsers: ['Chrome', 'Firefox']
-            }
+        		configFile: 'karma.conf.js',            	
+            	//run karma in the background
+//            	background: true
+            },
+        	// Continuous Integration tests once in PhantomJS browser.
+        	ci: {
+        		configFile: 'karma.conf.js',        		
+        		singleRun: true,
+        		browsers: ['PhantomJS']
+        	}
         },
 
         concat: {
