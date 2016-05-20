@@ -43,7 +43,7 @@ Additional project dependencies require installing further grunt plugins in loca
 
 ##### Usage #####
 
-Go to /hb-ui/main/ directory where bower.json file is located and type:
+Go to /hbUi.geo project directory where bower.json file is located and type:
 
     bower install
 
@@ -52,7 +52,7 @@ This will deploy what is specified in bower.json
 
 ## Build procedure ##
 
-Go to /hb-ui/main/ directory where Gruntfile.js file is located and type:
+Go to /hbUi.geo/ directory where Gruntfile.js file is located and type:
 
     grunt
 
@@ -61,7 +61,7 @@ This should output something like:
     Running "concat:dist" (concat) task
     
     Running "uglify:build" (uglify) task
-    File dist/hbUi.geo-0.0.1.min.js created: 1.83 kB → 910 B
+    File target/dist/hbUi.geo-0.0.1.min.js created: 1.83 kB → 910 B
     >> 1 file created.
     
     Running "cssmin:combine" (cssmin) task
