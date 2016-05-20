@@ -1,12 +1,16 @@
 {
   "name": "hbUi.geo",
   "version": "0.0.1",
+  "description": "hbUi.geo AngularJS module provides GIS JS client functionalities relying on hb-geo-api microservice.",
+  "license": "(Apache-2.0)",
+  "copyright": "Copyright 2016 Patrick Refondini",
   "scripts": {
-    "test": "karma start --reporters html karma.conf.js" 
+    "test": "karma start --reporters html karma.conf.js"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-concat": "^0.1.6",
+    "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-jshint": "^0.10.0",

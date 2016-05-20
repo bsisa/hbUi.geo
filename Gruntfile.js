@@ -8,6 +8,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        clean: ["target/**/*"],
+        
         // Configure tests using karma
         karma: {
             unit: {
@@ -65,7 +67,8 @@ module.exports = function(grunt) {
 
     });
 
-    // Load the plugin that provides the "concat" and "uglify" tasks.
+    // Load plugins providing custom tasks.
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
