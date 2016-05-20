@@ -22,7 +22,11 @@ module.exports = function(grunt) {
         		configFile: 'karma.conf.js',        		
         		singleRun: true,
         		browsers: ['PhantomJS']
-        	}
+        	},
+        	dev: {
+        		configFile: 'karma.conf.js',        		
+        		singleRun: true
+        	},
         },
 
         concat: {
@@ -75,7 +79,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-karma');
 
-    // Default task(s).
-    grunt.registerTask('default', ['concat:dist', 'uglify', 'cssmin' ]);
+    // Default task(s): clean up every temporary files (distribution, test reports,...), 
+    // re-builds the distribution and tests in a single run with all defined browsers (see karma.conf.js)
+    grunt.registerTask('default', ['clean', 'concat:dist', 'uglify', 'cssmin', 'karma:dev' ]);
 
 };
