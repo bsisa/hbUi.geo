@@ -1,11 +1,9 @@
 {
   "name": "hbUi.geo",
   "version": "0.0.1",
-  
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "karma start --reporters html karma.conf.js" 
   },
-  
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-concat": "^0.1.6",
@@ -21,6 +19,7 @@
     "karma-chrome-launcher": "^1.0.1",
     "karma-firefox-launcher": "^1.0.0",
     "karma-html2js-preprocessor": "^1.0.0",
+    "karma-htmlfile-reporter": "^0.2.2",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-requirejs": "^1.0.0",
