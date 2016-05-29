@@ -10,7 +10,7 @@
  */
 (function() {
 	
-    angular.module('hbUi.geo', []);
+    angular.module('hbUi.geo', ['restangular']);
 	
     // ================================================================
     // ====                      Config                            ====

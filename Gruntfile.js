@@ -38,6 +38,7 @@ module.exports = function(grunt) {
            			'src/main/js/hbGeoModule.js',
            			'src/main/js/hbGeoLeafletService.js',
            			'src/main/js/hbGeoService.js',
+           			'src/main/js/hbGeoSwissCoordinatesService.js',
 		],
                 dest: 'target/dist/<%= pkg.name %>-<%= pkg.version %>.js'
             }
