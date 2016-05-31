@@ -178,7 +178,7 @@
 		};           
 
 		var getRemoteLatLongCoord = function getRemoteLatLongCoord(x_param, y_param) {
-			return _restHbGeoApi.one("lv03towgs84");
+			return _restHbGeoApi.one("coordinates/gps/"+x_param+"/"+y_param+"/477.0");
 			//return restHbGeoApi.one("lv03towgs84").get({"easting" : x_param, "northing" : y_param, "format" : "json"})
 //	        .then(function(buildingElfin) {
 //	        	// Force CAR array sorting by POS attribute
@@ -201,8 +201,8 @@
 		return {
 //                getLongitudeLatitudeCoordinates:getLongitudeLatitudeCoordinates,
 //                getSwissFederalCoordinates:getSwissFederalCoordinates,
-                getLongitudeLatitudeCoordinates: function() {
-                    return _restHbGeoApi.one("lv03towgs84");
+                getLongitudeLatitudeCoordinates: function(x_param, y_param) {
+                    return _restHbGeoApi.one("coordinates/gps/"+x_param+"/"+y_param+"/477.0");
                 },
                 getSwissFederalCoordinates:getSwissFederalCoordinates    
 		}

@@ -16,7 +16,11 @@
 //http://geodesy.geo.admin.ch/reframe/wgs84tolv03?easting=6.931704420427172&northing=46.992859388431334&format=json
 //{"easting": "561440.1848373807", "northing": "204769.04525083603"}
 
-var restHbGeoApiUrl = "http://geodesy.geo.admin.ch/reframe/" ;
+//var restHbGeoApiUrl = "http://geodesy.geo.admin.ch/reframe/" ;
 
+
+// http://localhost:9000/coordinates/gps/561440.184310663/204769.044093776/0.0
+// http://localhost:9000/coordinates/swiss/6.870381148/46.750418879/526.55
+var restHbGeoApiUrl = "http://localhost:9000/" ;
 
 var clientDebugEnabled = true;

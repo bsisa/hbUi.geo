@@ -28,11 +28,16 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 	}));
 
 	it('point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates', function() {
-		console.log("DOES NOTHING...");
-//		var point1 = {
-//				"x" : 561440.184310663,
-//				"y" : 204769.044093776
-//			};
+		console.log("DOES NOTHING... updated...");
+		
+		var point1 = {
+				"x" : 561440.184310663,
+				"y" : 204769.044093776
+			};
+		
+		hbGeoService.getLongitudeLatitudeCoordinates(point1.x, point1.y);		
+		
+		
 //		var latLng1 = hbGeoService.getLongitudeLatitudeCoordinates(point1.x, point1.y);
 //		var point1bis = hbGeoService.getSwissFederalCoordinates(latLng1.lat, latLng1.lng);
 //
