@@ -17,44 +17,34 @@
 (function() {
 
 	angular.module('hbUi.geo').factory('hbGeoSwissCoordinatesService', ['Restangular', '$log', function(Restangular, $log) {
-		
-		
-//			lv03towgs84?easting=561440.184310663&northing=204769.044093776&format=json
-//					wgs84tolv03?easting=6.931704420427172&northing=46.992859388431334&format=json
-		
-    	var restHbGeoApi = undefined;
+
+		$log.debug(">>> hbGeoSwissCoordinatesService factory start");
+    	
+		var restHbGeoApiPort = 9001
     	var _restHbGeoApi = undefined;
     	
     	var setRestHbGeoApi = function() {
-    		
-    		restHbGeoApi = Restangular.withConfig(function(Configurer) {
+
+    		var restHbGeoApi = Restangular.withConfig( function(Configurer) {
             	/*
             	   To allow single configuration point on the server side 
             	   restHbGeoApiUrl variable is contained in conf.js file dynamically 
             	   created by the server.
             	*/
             	if (restHbGeoApiUrl==null) {
-            		$log.error("GeoxmlService required apiBaseUrl information missing. This information is served dynamically by the HyperBird server, please make sure it is running.");
+            		$log.error("GeoxmlService required restHbGeoApiUrl information missing. This information is served dynamically by the HyperBird server, please make sure it is running.");
+            	} else {
+            		$log.debug("GeoxmlService required restHbGeoApiUrl: " + restHbGeoApiUrl);
+            		Configurer.setBaseUrl(restHbGeoApiUrl);
             	}
-            	/* Local hb-ui only test base URL */
-            	//var apiBaseUrl = 'api-mocks';
-             	Configurer.setBaseUrl(restHbGeoApiUrl);
-             	
-             	// Default restangular behaviour assuming id field is id not suitable with ELFIN.Id
-            	// Helpful reference: 
-            	// https://github.com/mgonto/restangular#i-use-mongo-and-the-id-of-the-elements-is-_id-not-id-as-the-default-therefore-requests-are-sent-to-undefined-routes
-            	//Configurer.setRestangularFields({ id: "Id" });
-            	
             });
     		
-    		// Is it necessary ?
+    		// TODO: Clarify
     		_restHbGeoApi = restHbGeoApi.all('');
     		
     	};
     	
     	setRestHbGeoApi();		
-		
-		
 		
 		// ====================================================================
 		//     
@@ -176,33 +166,12 @@
 			// transformed coordinate system.
 			return {x: y, y : x};
 		};           
-
-		var getRemoteLatLongCoord = function getRemoteLatLongCoord(x_param, y_param) {
-			return _restHbGeoApi.one("coordinates/gps/"+x_param+"/"+y_param+"/477.0");
-			//return restHbGeoApi.one("lv03towgs84").get({"easting" : x_param, "northing" : y_param, "format" : "json"})
-//	        .then(function(buildingElfin) {
-//	        	// Force CAR array sorting by POS attribute
-//	        	// TODO: Evaluate how to guarantee this in the produced JSON on the server in a single place.
-//	        	// DONE: Safe array ordering is mandatory to prevent null accessor related exception
-//	        	//       Need review of other similar operations
-//	        	if ( buildingElfin['CARACTERISTIQUE'] != null && buildingElfin['CARACTERISTIQUE']['CARSET'] != null && buildingElfin['CARACTERISTIQUE']['CARSET']['CAR'] != null) {
-//	        		hbUtil.reorderArrayByPOS(buildingElfin['CARACTERISTIQUE']['CARSET']['CAR']);
-//	        	}
-//	        	$scope.buildingElfin = buildingElfin;
-//	        	
-//	        }, function(response) {
-//	        	var message = "Aucun object "+classe+" disponible pour la collection: " + collectionId + " et l'identifiant: " + elfinId + ".";
-//	        	$log.warn("HbBuildingLineConverterController - statut de retour: " + response.status + ". Message utilisateur: " + message);
-//	            hbAlertMessages.addAlert("danger",message);
-//	            
-//	        });
-		};
 		
 		return {
-//                getLongitudeLatitudeCoordinates:getLongitudeLatitudeCoordinates,
-//                getSwissFederalCoordinates:getSwissFederalCoordinates,
                 getLongitudeLatitudeCoordinates: function(x_param, y_param) {
-                    return _restHbGeoApi.one("coordinates/gps/"+x_param+"/"+y_param+"/477.0");
+                	var restGetQuery = "coordinates/gps/"+x_param+"/"+y_param+"/477.0?port="+restHbGeoApiPort;
+                	$log.debug("restGetQuery = " + restGetQuery);
+                	return _restHbGeoApi.one(restGetQuery);
                 },
                 getSwissFederalCoordinates:getSwissFederalCoordinates    
 		}
