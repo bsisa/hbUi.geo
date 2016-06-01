@@ -21,6 +21,6 @@
 
 // http://localhost:9000/coordinates/gps/561440.184310663/204769.044093776/0.0
 // http://localhost:9000/coordinates/swiss/6.870381148/46.750418879/526.55
-var restHbGeoApiUrl = "http://localhost:9000/" ;
+var restHbGeoApiUrl = "http://localhost:9001/" ;
 
 var clientDebugEnabled = true;
