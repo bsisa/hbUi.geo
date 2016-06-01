@@ -20,7 +20,6 @@
 
 		$log.debug(">>> hbGeoSwissCoordinatesService factory start");
     	
-		var restHbGeoApiPort = 9001
     	var _restHbGeoApi = undefined;
     	
     	var setRestHbGeoApi = function() {
@@ -171,7 +170,7 @@
 		
 		return {
                 getLongitudeLatitudeCoordinates: function(x_param, y_param) {
-                	var restGetQuery = "coordinates/gps/"+x_param+"/"+y_param+"/477.0?port="+restHbGeoApiPort;
+                	var restGetQuery = "coordinates/gps/"+x_param+"/"+y_param+"/477.0";
                 	$log.debug("restGetQuery = " + restGetQuery);
                 	return _restHbGeoApi.one(restGetQuery);
                 },
