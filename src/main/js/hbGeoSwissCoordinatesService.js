@@ -28,14 +28,16 @@
     		var restHbGeoApi = Restangular.withConfig( function(Configurer) {
             	/*
             	   To allow single configuration point on the server side 
-            	   restHbGeoApiUrl variable is contained in conf.js file dynamically 
-            	   created by the server.
+            	   hbGeoApiUrl variable is contained in conf.js file dynamically 
+            	   created by the server. This URL is a proxy forwarding to actual 
+            	   hb-geo-api service which may have different protocol, host and 
+            	   port.  
             	*/
-            	if (restHbGeoApiUrl==null) {
-            		$log.error("GeoxmlService required restHbGeoApiUrl information missing. This information is served dynamically by the HyperBird server, please make sure it is running.");
+            	if (hbGeoApiUrl==null) {
+            		$log.error("GeoxmlService required hbGeoApiUrl information missing. This information is served dynamically by the HyperBird server, please make sure it is running.");
             	} else {
-            		$log.debug("GeoxmlService required restHbGeoApiUrl: " + restHbGeoApiUrl);
-            		Configurer.setBaseUrl(restHbGeoApiUrl);
+            		$log.debug("GeoxmlService required hbGeoApiUrl: " + hbGeoApiUrl);
+            		Configurer.setBaseUrl(hbGeoApiUrl);
             	}
             });
     		
