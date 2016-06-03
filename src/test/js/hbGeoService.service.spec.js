@@ -19,34 +19,46 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 		module('hbUi.geo')
 	});
 
-	// Defined reusable service reference variable outside each test
+	// Reusable service reference variable outside each test
 	var hbGeoService;
+	// Accessible $log service (see angular-mocks.js)
+	var $log;
 
 	// Wrap the parameter in underscores
-	beforeEach(inject(function(_hbGeoService_) {
+	beforeEach(inject(function(_hbGeoService_, _$log_) {
 		hbGeoService = _hbGeoService_;
+		$log = _$log_;
 	}));
 
+	// Log debug messages in Karma
+	afterEach(function(){  
+	  console.log("Nb $log.debug message: " + $log.debug.logs.length);
+	  for (var i = 0; i < $log.debug.logs.length; i++) {
+		  var message = $log.debug.logs[i];
+		  console.log(message);
+	  }
+	});
+	
 	it('point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates', function() {
-		console.log("DOES NOTHING... updated...");
-		
-		var point1 = {
-				"x" : 561440.184310663,
-				"y" : 204769.044093776
+
+		var point1 = {            // Using http://www.swisstopo.admin.ch/internet/swisstopo/en/home/apps/calc/navref.html
+				"x" : 561440.184, // =>   6.931704416 back =>  561440.184
+				"y" : 204769.044, // =>  46.992859387 back =>  204769.044
+				"z" : 500.000     // => 549.515       back =>     500.000
 			};
 		
-		hbGeoService.getLongitudeLatitudeCoordinates(point1.x, point1.y);		
-		
-		
-//		var latLng1 = hbGeoService.getLongitudeLatitudeCoordinates(point1.x, point1.y);
-//		var point1bis = hbGeoService.getSwissFederalCoordinates(latLng1.lat, latLng1.lng);
-//
-//		console.log("point1 swiss: x, y                       : " + point1.x + ", " + point1.y);
-//		console.log("latLng1 swiss => latlng approx: lat, lng : " + latLng1.lat + ", " + latLng1.lng);
-//		console.log("point1bis latlng => swiss approx: x,   y : " + point1bis.x + ", " + point1bis.y);
-//
-//		expect(point1bis.x).toEqual(point1.x);
-//		expect(point1bis.y).toEqual(point1.y);
+		var latLng1 = hbGeoService.getLongitudeLatitudeCoordinates(point1.x, point1.y);
+		var point1bis = hbGeoService.getSwissFederalCoordinates(latLng1.lat, latLng1.lng);
+
+		$log.debug("point1 swiss: x, y                       : " + point1.x + ", " + point1.y);
+		$log.debug("latLng1 swiss => latlng approx: lat, lng : " + latLng1.lat + ", " + latLng1.lng);
+		$log.debug("point1bis latlng => swiss approx: x,   y : " + point1bis.x + ", " + point1bis.y);
+
+		var approxDeltaX = 0.360386647;
+		var approxRoundX = 0.0000000001;
+		var approxDeltaY = 0.5372545553;
+		expect(point1bis.x + approxRoundX).toEqual(point1.x + approxDeltaX);
+		expect(point1bis.y).toEqual(point1.y + approxDeltaY);
 	});
 
 });
