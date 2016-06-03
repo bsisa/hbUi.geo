@@ -1,6 +1,6 @@
 
 /**
- * TODO: Check 
+ * TODO: WE WANT END TO END TEST HERE, NEED TO MOVE TO SOMETHING LIKE http://www.protractortest.org/
  * 
  * http://www.swisstopo.admin.ch/internet/swisstopo/en/home/products/software/products/skripts.html
  * 
