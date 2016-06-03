@@ -19,45 +19,62 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 		module('hbUi.geo')
 	});
 
-	// Defined reusable service reference variable outside each test
+	
+	// Reusable service reference variable outside each test
 	var hbGeoSwissCoordinatesService;
+	// Accessible $log service (see angular-mocks.js)
+	var $log;	
 
 	// Wrap the parameter in underscores
-	beforeEach(inject(function(_hbGeoSwissCoordinatesService_) {
+	beforeEach(inject(function(_hbGeoSwissCoordinatesService_, _$log_) {
 		hbGeoSwissCoordinatesService = _hbGeoSwissCoordinatesService_;
+		$log = _$log_;		
 	}));
+	
+	// Log debug messages in Karma
+	afterEach(function(){  
+	  console.log("Nb $log.debug message: " + $log.debug.logs.length);
+	  for (var i = 0; i < $log.debug.logs.length; i++) {
+		  var message = $log.debug.logs[i];
+		  console.log(message);
+	  }
+	});	
+	
+	
 
 	it('REMOTE IMPL -- point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates', function() {
 
-		var point1 = {
-			"x" : 561440.184310663,
-			"y" : 204769.044093776
-		};
+		var point1 = {            // Using http://www.swisstopo.admin.ch/internet/swisstopo/en/home/apps/calc/navref.html
+				"x" : 561440.184, // =>   6.931704413 back =>  561440.184
+				"y" : 204769.044, // =>  46.992859383 back =>  204769.044
+				"z" : 477.000     // => 526.513       back =>     477.000
+			};
 		
-		console.log("REMOTE: point1 to convert : " + point1.x + ", " + point1.y);
+		$log.debug("REMOTE: point1 to convert : " + point1.x + ", " + point1.y);
 		
 		//hbGeoSwissCoordinatesService.getLongitudeLatitudeCoordinates().get({"easting" : point1.x, "northing" : point1.y, "format" : "json"}).then(
 		hbGeoSwissCoordinatesService.getLongitudeLatitudeCoordinates(point1.x, point1.y).get().then(
 				function(latLng1) {
 
-					console.log("REMOTE: latLng result : " + latLng1.easting + ", " + easting.northing);
+					//$log.debug("REMOTE: latLng result                            : " + latLng1.easting + ", " + easting.northing);
 					
 //					var point1bis = hbGeoSwissCoordinatesService.getSwissFederalCoordinates(latLng1.lat, latLng1.lng);
 
-					console.log("REMOTE: point1 swiss: x, y                       : " + point1.x + ", " + point1.y);
-					console.log("REMOTE: latLng1 swiss => latlng approx: lat, lng : " + latLng1.lat + ", " + latLng1.lng);
-//					console.log("REMOTE: point1bis latlng => swiss approx: x,   y : " + point1bis.x + ", " + point1bis.y);
+					$log.debug("2) REMOTE: point1 swiss: x, y                       : " + point1.x + ", " + point1.y);
+					$log.debug("2) REMOTE: latLng1 swiss => latlng approx: lat, lng : " + latLng1.lat + ", " + latLng1.lng);
+//					$log.debug("REMOTE: point1bis latlng => swiss approx: x,   y : " + point1bis.x + ", " + point1bis.y);
 					
+//					expect(latLng1.)
 //					expect(point1bis.x).toEqual(point1.x);
 //					expect(point1bis.y).toEqual(point1.y);						
 					
 				}, 
 				function(response) {
-					console.log("REMOTE: FAILURE WITH response = " + angular.toJson(response));
+					$log.debug("REMOTE: FAILURE WITH response = " + angular.toJson(response));
 				}
 			);
 		
-		console.log("REMOTE: end...");
+		$log.debug("REMOTE: end...");
 	});
 
 });
