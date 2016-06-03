@@ -82,6 +82,7 @@ module.exports = function(grunt) {
 
     // Default task(s): clean up every temporary files (distribution, test reports,...), 
     // re-builds the distribution and tests in a single run with all defined browsers (see karma.conf.js)
-    grunt.registerTask('default', ['clean', 'concat:dist', 'uglify', 'cssmin', 'karma:dev' ]);
+    grunt.registerTask('default', ['clean', 'concat:dist', 'uglify', 'cssmin' ]);
+    grunt.registerTask('dist', ['clean', 'concat:dist', 'uglify', 'cssmin', 'karma:dev' ]);
 
 };
