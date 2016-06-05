@@ -17,7 +17,7 @@
 
 	angular.module('hbUi.geo').factory('hbGeoSwissCoordinatesService', ['Restangular', '$log', function(Restangular, $log) {
 
-		$log.debug(">>> hbGeoSwissCoordinatesService factory start");
+		$log.debug(">>> hbGeoSwissCoordinatesService factory start 3)");
     	
     	var _restHbGeoApi = undefined;
     	
@@ -36,6 +36,9 @@
             	} else {
             		$log.debug("GeoxmlService required hbGeoApiUrl: " + hbGeoApiUrl);
             		Configurer.setBaseUrl(hbGeoApiUrl);
+//                	var defaultHeadersObj = {};
+//                	defaultHeadersObj["Content-Type"] = "application/json";
+//                	Configurer.setDefaultHeaders( defaultHeadersObj );            		
             	}
             });
     		
@@ -52,11 +55,17 @@
                 	$log.debug("REMOTE: restGetQuery = " + restGetQuery);
                 	return _restHbGeoApi.one(restGetQuery);
                 },
+                getLongitudeLatitudeCoordinatesList: function() {
+                	var restPostQuery = "coordinates/gps/";
+                	$log.debug("REMOTE: restPostQuery = " + restPostQuery);
+                	return _restHbGeoApi.all(restPostQuery);
+                },                
                 getSwissFederalCoordinates: function(x_param, y_param) {
                 	var restGetQuery = "coordinates/swiss/"+x_param+"/"+y_param+"/527.0";
                 	$log.debug("REMOTE: restGetQuery = " + restGetQuery);
                 	return _restHbGeoApi.one(restGetQuery);
-                }
+                } 
+                
 		}
     }]);
 
