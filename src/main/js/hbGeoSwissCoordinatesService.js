@@ -17,7 +17,7 @@
 
 	angular.module('hbUi.geo').factory('hbGeoSwissCoordinatesService', ['Restangular', '$log', function(Restangular, $log) {
 
-		$log.debug(">>> hbGeoSwissCoordinatesService factory start 3)");
+		$log.debug(">>> hbGeoSwissCoordinatesService factory start...");
     	
     	var _restHbGeoApi = undefined;
     	
