@@ -129,6 +129,9 @@
 		 */
 		var getLongitudeLatitudeCoordinates = function(x_param, y_param) {
 
+		//	TODO: Review - work on augmented info ?
+		// $log.debug("LOCAL: hbGeoService.getLongitudeLatitudeCoordinates("+x_param+", "+y_param+")");
+			
 			var point = {
 				X : parseFloat(x_param),
 				Y : parseFloat(y_param)
@@ -192,7 +195,10 @@
 		 * @param lng_param
 		 */
 		var getSwissFederalCoordinates = function(lat_param,lng_param) {
-		
+
+		//	TODO: Review - work on augmented info ?
+		//	$log.debug("LOCAL: hbGeoService.getSwissFederalCoordinates("+lat_param+", "+lng_param+")");			
+			
 			if (!lat_param || !lng_param) return {x: 0, y : 0};
 			
 			var latLng = {lat: parseFloat(lat_param), lng: parseFloat(lng_param)}
