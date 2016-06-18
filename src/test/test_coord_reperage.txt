@@ -1,0 +1,115 @@
+
+Stade foot Neuch:
+
+561851.33
+204804.63
+
+561906.65
+204840.89
+
+
+WRONG ??? NUMBER FORMAT PB.
+{
+	"rasterImgSize":{"x":3508,"y":4967},
+	"record1":{"pixels":{"x":16,"y":18},"coord":{"xEastingLng":561851.33,"yNorthingLat":204804.63,"zAltitude":500}},"record2":{"pixels":{"x":3494,"y":18},"coord":{"xEastingLng":561906.65,"yNorthingLat":204840.89,"zAltitude":500}}}
+
+{
+	"rasterImgSize": {
+		"x": 3508,
+		"y": 4967
+	},
+	"record1": {
+		"pixels": {
+			"x": 16,
+			"y": 18
+		},
+		"coord": {
+			"xEastingLng": 561851.33,
+			"yNorthingLat": 204804.63,
+			"zAltitude": 500
+		}
+	},
+	"record2": {
+		"pixels": {
+			"x": 3494,
+			"y": 18
+		},
+		"coord": {
+			"xEastingLng": 561906.65,
+			"yNorthingLat": 204840.89,
+			"zAltitude": 500
+		}
+	}
+}
+
+
+OK:
+
+{
+	"rasterImgSize": {
+		"x": 3508,
+		"y": 4967
+	},
+	"record1": {
+		"pixels": {
+			"x": 13,
+			"y": 12
+		},
+		"coord": {
+			"xEastingLng": 561851.33,
+			"yNorthingLat": 204804.63,
+			"zAltitude": 500
+		}
+	},
+	"record2": {
+		"pixels": {
+			"x": 3489,
+			"y": 17
+		},
+		"coord": {
+			"xEastingLng": 561906.65,
+			"yNorthingLat": 204840.89,
+			"zAltitude": 500
+		}
+	}
+}
+
+Ok:
+
+{
+    "rasterImgSize" : {
+        "x" : 60,
+        "y" : 40
+    },
+    "record1" : {
+      "pixels" : {
+         "x" : 20,
+   		   "y" : 20
+      },
+      "coord" : {"xEastingLng":500000,"yNorthingLat":200000,"zAltitude":500}
+    },
+    "record2" : {
+      "pixels" : {
+         "x" : 45,
+   		   "y" : 30
+      },
+      "coord" : {"xEastingLng":500010,"yNorthingLat":199980,"zAltitude":500}
+    }
+ }
+ 
+
+NOT OK NUMBERS WITH QUOTES...:
+
+{
+	"rasterImgSize":{"x":3508,"y":4967},
+	"record1":{
+		"pixels":{"x":13,"y":12},
+		"coord":{"xEastingLng":"561851.33","yNorthingLat":"204804.63","zAltitude":500}
+	},
+	"record2":{
+		"pixels":{"x":3489,"y":17},
+		"coord":{"xEastingLng":"561906.65","yNorthingLat":"204840.89","zAltitude":500}
+	}
+}
+
+

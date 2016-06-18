@@ -56,16 +56,20 @@
                 	return _restHbGeoApi.one(restGetQuery);
                 },
                 getLongitudeLatitudeCoordinatesList: function() {
-                	var restPostQuery = "coordinates/gps/";
-                	$log.debug("REMOTE: restPostQuery = " + restPostQuery);
-                	return _restHbGeoApi.all(restPostQuery);
+                	var restPostQueryURL = "coordinates/gps/";
+                	$log.debug("REMOTE: restPostQueryURL = " + restPostQueryURL);
+                	return _restHbGeoApi.all(restPostQueryURL);
                 },                
                 getSwissFederalCoordinates: function(x_param, y_param) {
                 	var restGetQuery = "coordinates/swiss/"+x_param+"/"+y_param+"/527.0";
                 	$log.debug("REMOTE: restGetQuery = " + restGetQuery);
                 	return _restHbGeoApi.one(restGetQuery);
-                } 
-                
+                },
+                getCoordinatesBoundsForRaster: function() {
+                	var restPostQueryURL = "coordinates/raster/bounds/"; 
+                	$log.debug("REMOTE: restPostQueryURL = " + restPostQueryURL);
+                	return _restHbGeoApi.all(restPostQueryURL);
+                }
 		}
     }]);
 
