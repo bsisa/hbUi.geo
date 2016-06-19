@@ -8,7 +8,7 @@ Stade foot Neuch:
 204840.89
 
 
-WRONG ??? NUMBER FORMAT PB.
+WRONG ??? NUMBER FORMAT PB => pixels 18-18 = 0 seems to create a problem (div per zero => NaN...)
 {
 	"rasterImgSize":{"x":3508,"y":4967},
 	"record1":{"pixels":{"x":16,"y":18},"coord":{"xEastingLng":561851.33,"yNorthingLat":204804.63,"zAltitude":500}},"record2":{"pixels":{"x":3494,"y":18},"coord":{"xEastingLng":561906.65,"yNorthingLat":204840.89,"zAltitude":500}}}
