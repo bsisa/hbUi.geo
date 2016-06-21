@@ -1,11 +1,13 @@
 
 Stade foot Neuch:
 
+Top left
 561851.33
 204804.63
 
-561906.65
-204840.89
+Bottom right
+561924.60
+204814.64
 
 
 WRONG ??? NUMBER FORMAT PB => pixels 18-18 = 0 seems to create a problem (div per zero => NaN...)
