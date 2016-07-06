@@ -32,9 +32,9 @@
             	   port.  
             	*/
             	if (hbGeoApiUrl==null) {
-            		$log.error("GeoxmlService required hbGeoApiUrl information missing. This information is served dynamically by the HyperBird server, please make sure it is running.");
+            		$log.error("hbGeoSwissCoordinatesService required hbGeoApiUrl information missing. This information is served dynamically by the HyperBird server, please make sure it is running.");
             	} else {
-            		$log.debug("GeoxmlService required hbGeoApiUrl: " + hbGeoApiUrl);
+            		$log.debug("hbGeoSwissCoordinatesService required hbGeoApiUrl: " + hbGeoApiUrl);
             		Configurer.setBaseUrl(hbGeoApiUrl);
 //                	var defaultHeadersObj = {};
 //                	defaultHeadersObj["Content-Type"] = "application/json";
