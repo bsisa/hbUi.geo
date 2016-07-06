@@ -19,7 +19,8 @@ module.exports = function(config) {
       'bower_components/leaflet/dist/leaflet.js',
       'bower_components/restangular/dist/restangular.js',
       'bower_components/underscore/underscore.js',      
-      'src/test/resources/*.json',
+      //'src/test/resources/*.json',
+      {pattern: 'src/test/resources/*.json', included: false},
       'src/test/js/conf.js',
       'src/test/js/**/*.spec.js',
       'target/dist/hbUi.geo-0.0.1.js'
