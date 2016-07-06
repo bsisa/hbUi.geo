@@ -88,7 +88,8 @@
             angular.forEach(zoneDef.LIGNE, function(l) {
                 var lPos = l.Id.split('#')[1];
                 // TODO: HBGeo? - This assumes ZONE Id, ID_G only point to the same ELFIN.
-                // Shouldn't we query the whole database collection for CLASSE/Id/ID_G ?
+                // Shouldn't we query the whole database collection for CLASSE/Id/ID_G 
+                // TODO: Requirement confirmed by PYS, it might points to other Id/ID_G !
                 var lineDef = getElByPos(elfin.FORME.LIGNE, lPos);
 
                 // Process each line passage which in turn reference a POINT whose coordinates will be extracted and drawn. 
@@ -96,6 +97,7 @@
                     var pPos = p.Id.split('#')[1];
                     // TODO: HBGeo? - This assumes LINE Id, ID_G only point to the same ELFIN.
                     // Shouldn't we query the whole database collection for CLASSE/Id/ID_G ?
+                    // TODO: Requirement confirmed by PYS, it might points to other Id/ID_G !
                     var pointDef = getElByPos(elfin.FORME.POINT, pPos);
                     points.push(pointDef);
                 });
