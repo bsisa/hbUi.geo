@@ -1,0 +1,216 @@
+{
+  "GEOSELECTION" : {
+    "CENTROIDE" : [ {
+      "TYPE" : "GEOGRAPHIE",
+      "XM" : 561439.8725585938,
+      "YM" : 204771.23406982422,
+      "ZM" : 0.0,
+      "RM" : 18.18350620046389
+    } ]
+  },
+  "IDENTIFIANT" : {
+    "AUT" : null,
+    "GER" : "SBAT",
+    "RES" : null,
+    "NOM" : "01 501 006 50",
+    "ALIAS" : "Max-Meuron 6, Passage",
+    "ORIGINE" : "RA",
+    "OBJECTIF" : "195",
+    "QUALITE" : "",
+    "COMPTE" : "06.21.503.10",
+    "DE" : "1900",
+    "A" : "",
+    "PAR" : "",
+    "VALEUR_A_NEUF" : null,
+    "VALEUR" : null,
+    "MOTCLE" : [ {
+      "VALUE" : "M1"
+    }, {
+      "VALUE" : "M2"
+    } ]
+  },
+  "FORME" : {
+    "POINT" : [ {
+      "POS" : 1,
+      "X" : 561440.1843106634,
+      "Y" : 204769.04409377603,
+      "Z" : 0.0,
+      "KSI" : 0.0,
+      "ANGLE" : 0.0,
+      "ALPHA" : "0",
+      "ZS" : 0.0,
+      "KSIS" : 0.0,
+      "ANGLES" : 0.0,
+      "ALPHAS" : "0",
+      "FONCTION" : "BASE",
+      "REMARQUE" : "maj. manuelle db."
+    }, {
+      "POS" : 2,
+      "X" : 561421.8609008789,
+      "Y" : 204770.87216186523,
+      "Z" : 0.0,
+      "KSI" : 0.0,
+      "ANGLE" : 0.0,
+      "ALPHA" : "0",
+      "ZS" : 0.0,
+      "KSIS" : 0.0,
+      "ANGLES" : 0.0,
+      "ALPHAS" : "0",
+      "FONCTION" : "LIBRE",
+      "REMARQUE" : "click écran"
+    }, {
+      "POS" : 3,
+      "X" : 561448.4747314453,
+      "Y" : 204787.01864624023,
+      "Z" : 0.0,
+      "KSI" : 0.0,
+      "ANGLE" : 0.0,
+      "ALPHA" : "0",
+      "ZS" : 0.0,
+      "KSIS" : 0.0,
+      "ANGLES" : 0.0,
+      "ALPHAS" : "0",
+      "FONCTION" : "LIBRE",
+      "REMARQUE" : "click écran"
+    }, {
+      "POS" : 4,
+      "X" : 561458.0512695312,
+      "Y" : 204771.6516418457,
+      "Z" : 0.0,
+      "KSI" : 0.0,
+      "ANGLE" : 0.0,
+      "ALPHA" : "0",
+      "ZS" : 0.0,
+      "KSIS" : 0.0,
+      "ANGLES" : 0.0,
+      "ALPHAS" : "0",
+      "FONCTION" : "LIBRE",
+      "REMARQUE" : "click écran"
+    }, {
+      "POS" : 5,
+      "X" : 561431.1033325195,
+      "Y" : 204755.3938293457,
+      "Z" : 0.0,
+      "KSI" : 0.0,
+      "ANGLE" : 0.0,
+      "ALPHA" : "0",
+      "ZS" : 0.0,
+      "KSIS" : 0.0,
+      "ANGLES" : 0.0,
+      "ALPHAS" : "0",
+      "FONCTION" : "LIBRE",
+      "REMARQUE" : "click écran"
+    } ],
+    "LIGNE" : [ {
+      "PASSAGE" : [ {
+        "POS" : 1,
+        "KSI" : -1.0,
+        "ANGLE" : 31.244989086823402,
+        "KSIS" : -1.0,
+        "ANGLES" : 0.0,
+        "Id" : "G20050725170559296#2",
+        "ID_G" : "G20040930101030005",
+        "FONCTION" : "PASSAGE",
+        "CLASSE" : "IMMEUBLE"
+      }, {
+        "POS" : 2,
+        "KSI" : -0.22860517946203407,
+        "ANGLE" : 31.244989086823402,
+        "KSIS" : -0.22860517946203407,
+        "ANGLES" : 0.0,
+        "Id" : "G20050725170559296#3",
+        "ID_G" : "G20040930101030005",
+        "FONCTION" : "PASSAGE",
+        "CLASSE" : "IMMEUBLE"
+      }, {
+        "POS" : 3,
+        "KSI" : 0.22009326849255584,
+        "ANGLE" : 301.93067972818454,
+        "KSIS" : 0.22009326849255584,
+        "ANGLES" : 0.0,
+        "Id" : "G20050725170559296#4",
+        "ID_G" : "G20040930101030005",
+        "FONCTION" : "PASSAGE",
+        "CLASSE" : "IMMEUBLE"
+      }, {
+        "POS" : 4,
+        "KSI" : 1.0,
+        "ANGLE" : 211.10277100331646,
+        "KSIS" : 1.0,
+        "ANGLES" : 0.0,
+        "Id" : "G20050725170559296#5",
+        "ID_G" : "G20040930101030005",
+        "FONCTION" : "PASSAGE",
+        "CLASSE" : "IMMEUBLE"
+      } ],
+      "GUIDE" : [ ],
+      "POS" : 1,
+      "DIRECTION" : "AVAL",
+      "Id" : "G20050725170559296#1",
+      "ID_G" : "G20040930101030005",
+      "FONCTION" : "FRONTIERE"
+    } ],
+    "ZONE" : [ {
+      "LIGNE" : [ {
+        "PASSAGE" : [ ],
+        "GUIDE" : [ ],
+        "POS" : 1,
+        "DIRECTION" : "AVAL",
+        "Id" : "G20050725170559296#1",
+        "ID_G" : "G20040930101030005",
+        "FONCTION" : "FRONTIERE"
+      } ],
+      "POS" : 1
+    } ],
+    "SYMBOLE" : [ ]
+  },
+  "ANNEXE" : {
+    "RENVOI" : [ {
+      "POS" : 1,
+      "LIEN" : "../../HB4-Objets/G20040930101030005/annexes/G20050725170559296/SNC00219.jpg",
+      "VALUE" : "Photo"
+    }, {
+      "POS" : 2,
+      "LIEN" : "../../HB4-Objets/G20040930101030005/annexes/G20050725170559296/MaxMeuron6_contratEcap_2013.pdf",
+      "VALUE" : "MaxMeuron6_contratEcap_2013.pdf"
+    }, {
+      "POS" : 3,
+      "LIEN" : "../../HB4-Objets/G20040930101030005/annexes/G20050725170559296/MonteCharge_analyse_MaxMeuron.pdf",
+      "VALUE" : "MonteCharge_analyse_MaxMeuron.pdf"
+    }, {
+      "POS" : 4,
+      "LIEN" : "2014_Thaiti_VINI_LOU.jpg",
+      "VALUE" : "photo"
+    }, {
+      "POS" : 5,
+      "LIEN" : "2009-04-29.jpg",
+      "VALUE" : "photo"
+    }, {
+      "POS" : 6,
+      "LIEN" : "listAbribus.xls",
+      "VALUE" : "file"
+    }, {
+      "POS" : 7,
+      "LIEN" : "CEG_amiante.pdf",
+      "VALUE" : "file"
+    }, {
+      "POS" : 8,
+      "LIEN" : "1D.pdf",
+      "VALUE" : "photo"
+    }, {
+      "POS" : 9,
+      "LIEN" : "2014_Thaiti_VINI_LOU.jpg",
+      "VALUE" : "photo"
+    } ]
+  },
+  "DIVERS" : {
+    "REMARQUE" : "SEMO: A. Krasniki, 032 717 74 72   Bibliomonde, Lanterne Magique. Raccordé au chauffage urbain des Terreaux",
+    "METHODE" : ""
+  },
+  "Id" : "G20050725170559296",
+  "ID_G" : "G20040930101030005",
+  "CLASSE" : "IMMEUBLE",
+  "GROUPE" : "",
+  "TYPE" : "BIEN",
+  "NATURE" : "Patrimoine"
+}
