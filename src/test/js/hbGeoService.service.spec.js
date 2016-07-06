@@ -24,7 +24,7 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 	// Accessible $log service (see angular-mocks.js)
 	var $log;
 
-	// Wrap the parameter in underscores
+	// Wrap parameters in underscores
 	beforeEach(inject(function(_hbGeoService_, _$log_) {
 		hbGeoService = _hbGeoService_;
 		$log = _$log_;
@@ -39,7 +39,7 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 	  }
 	});
 	
-	it('point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates', function() {
+	it('WARNING: precision loss: x: 36cm, y: 54cm ! point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates.', function() {
 
 		var point1 = {            // Using http://www.swisstopo.admin.ch/internet/swisstopo/en/home/apps/calc/navref.html
 				"x" : 561440.184, // =>   6.931704416 back =>  561440.184
@@ -59,6 +59,9 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 		var approxDeltaY = 0.5372545553;
 		expect(point1bis.x + approxRoundX).toEqual(point1.x + approxDeltaX);
 		expect(point1bis.y).toEqual(point1.y + approxDeltaY);
+		
+//		expect(point1bis.x).toEqual(point1.x);
+//		expect(point1bis.y).toEqual(point1.y);		
 	});
 
 });

@@ -24,7 +24,7 @@
  * {"easting": "2599999.810036594", "northing": "1199999.6801912596", "altitude": "500.3777916841209"}
  */
 
-describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates conversions - Using REMOTE...', function() {
+describe('INEFFECTIVE remoting fails silently /!\ Move to protractor ... /!\ - Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates conversions', function() {
 
 	beforeEach(function() {
 		module('hbUi.geo')
