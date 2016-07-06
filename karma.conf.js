@@ -13,10 +13,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'bower_components/karma-read-json/karma-read-json.js', // Test only
       'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-mocks/angular-mocks.js', // Test only
+      'bower_components/leaflet/dist/leaflet.js',
       'bower_components/restangular/dist/restangular.js',
       'bower_components/underscore/underscore.js',      
+      'src/test/resources/*.json',
       'src/test/js/conf.js',
       'src/test/js/**/*.spec.js',
       'target/dist/hbUi.geo-0.0.1.js'
