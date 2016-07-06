@@ -94,7 +94,7 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 	});	
 	
 	
-	it('WARNING: precision loss: x: 36cm, y: 54cm ! point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates.', function() {
+	it('WARNING: swiss <=> GPS coordinates approximation with precision loss: x: 36cm, y: 54cm !', function() {
 
 		var point1 = {            // Using http://www.swisstopo.admin.ch/internet/swisstopo/en/home/apps/calc/navref.html
 				"x" : 561440.184, // =>   6.931704416 back =>  561440.184
