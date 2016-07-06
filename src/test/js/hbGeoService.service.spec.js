@@ -70,6 +70,30 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 	});	
 	
 	
+	it('hbGeoService.getElfinZone1Points - `elfin1.FORME.POINT` at #2, #4 ', function() {
+		
+		// Remark: First ELFIN.FORME.LIGNE.PASSAGE points at #2 ELFIN.FORME.POINT
+		var expectedElfin1Zone1Points1 = {
+				x : 561421.8609008789,
+				y : 204770.87216186523
+		}
+		
+		var expectedElfin1Zone1Points4 = {
+				x : 561431.1033325195,
+				y : 204755.3938293457
+		}		
+
+		var elfin1Zone1Points = hbGeoService.getElfinZone1Points(elfin1);
+		expect(elfin1Zone1Points.length).toEqual(4);
+		expect(expectedElfin1Zone1Points1.x).toEqual(elfin1Zone1Points[0].X);
+		expect(expectedElfin1Zone1Points1.y).toEqual(elfin1Zone1Points[0].Y);
+		
+		expect(expectedElfin1Zone1Points4.x).toEqual(elfin1Zone1Points[3].X);
+		expect(expectedElfin1Zone1Points4.y).toEqual(elfin1Zone1Points[3].Y);
+
+	});	
+	
+	
 	it('WARNING: precision loss: x: 36cm, y: 54cm ! point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates.', function() {
 
 		var point1 = {            // Using http://www.swisstopo.admin.ch/internet/swisstopo/en/home/apps/calc/navref.html
