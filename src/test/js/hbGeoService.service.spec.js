@@ -24,10 +24,14 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 	// Accessible $log service (see angular-mocks.js)
 	var $log;
 
+	// Elfin test 1
+	var elfin1;	
+	
 	// Wrap parameters in underscores
 	beforeEach(inject(function(_hbGeoService_, _$log_) {
 		hbGeoService = _hbGeoService_;
 		$log = _$log_;
+		elfin1 = readJSON('src/test/resources/elfin_test_1.json');	
 	}));
 
 	// Log debug messages in Karma
@@ -38,6 +42,19 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 		  console.log(message);
 	  }
 	});
+	
+	
+	it('Get `elfin1` base point', function() {
+		var expectedElfin1Swiss = {
+				x : 561440.1843106634,
+				y : 204769.04409377603
+		}
+
+		var elfin1BasePoint = hbGeoService.getElfinBasePoint(elfin1);
+		expect(expectedElfin1Swiss.x).toEqual(elfin1BasePoint.X);
+		expect(expectedElfin1Swiss.y).toEqual(elfin1BasePoint.Y);
+	});
+	
 	
 	it('WARNING: precision loss: x: 36cm, y: 54cm ! point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates.', function() {
 

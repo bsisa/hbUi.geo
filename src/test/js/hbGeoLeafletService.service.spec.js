@@ -4,7 +4,7 @@
  * var someJson = readJSON('json/foobar.json');
  * where 
  */
-describe('hbGeoLeafletService tests', function() {
+describe('NO TEST YET - hbGeoLeafletService tests', function() {
 
 	beforeEach(function() {
 		module('hbUi.geo')
@@ -32,29 +32,14 @@ describe('hbGeoLeafletService tests', function() {
 	  }
 	});
 	
-	it('WARNING: precision loss: x: 36cm, y: 54cm ! point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates.', function() {
-
-		var point1 = {            // Using http://www.swisstopo.admin.ch/internet/swisstopo/en/home/apps/calc/navref.html
-				"x" : 561440.184, // =>   6.931704416 back =>  561440.184
-				"y" : 204769.044, // =>  46.992859387 back =>  204769.044
-				"z" : 500.000     // => 549.515       back =>     500.000
-			};
-		
-		var latLng1 = hbGeoLeafletService.getLongitudeLatitudeCoordinates(point1.x, point1.y);
-		var point1bis = hbGeoLeafletService.getSwissFederalCoordinates(latLng1.lat, latLng1.lng);
-
-		$log.debug("point1 swiss: x, y                       : " + point1.x + ", " + point1.y);
-		$log.debug("latLng1 swiss => latlng approx: lat, lng : " + latLng1.lat + ", " + latLng1.lng);
-		$log.debug("point1bis latlng => swiss approx: x,   y : " + point1bis.x + ", " + point1bis.y);
-
-		var approxDeltaX = 0.360386647;
-		var approxRoundX = 0.0000000001;
-		var approxDeltaY = 0.5372545553;
-		expect(point1bis.x + approxRoundX).toEqual(point1.x + approxDeltaX);
-		expect(point1bis.y).toEqual(point1.y + approxDeltaY);
-		
-//		expect(point1bis.x).toEqual(point1.x);
-//		expect(point1bis.y).toEqual(point1.y);		
-	});
+//	it('Get `elfin1` base point', function() {
+//		var expectedElfin1Swiss = {
+//				x : "561440.1843106634",
+//				y : "204769.04409377603"
+//		}
+//
+//		//hbGeoLeafletService.
+//		expect(expectedElfin1Swiss.x).toEqual();
+//	});
 
 });
