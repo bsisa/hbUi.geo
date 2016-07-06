@@ -233,7 +233,8 @@
                 getElfinBasePoint:getElfinBasePoint,
                 getElfinZone1Points:getElfinZone1Points,
                 getLongitudeLatitudeCoordinates:getLongitudeLatitudeCoordinates,
-                getSwissFederalCoordinates:getSwissFederalCoordinates
+                getSwissFederalCoordinates:getSwissFederalCoordinates,
+                getElByPos:getElByPos // Made public for test purpose
 		}
     }]);
 

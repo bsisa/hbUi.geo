@@ -44,7 +44,7 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 	});
 	
 	
-	it('Get `elfin1` base point', function() {
+	it('hbGeoService.getElfinBasePoint - Get `elfin1` base point', function() {
 		var expectedElfin1Swiss = {
 				x : 561440.1843106634,
 				y : 204769.04409377603
@@ -54,6 +54,20 @@ describe('Swiss Federal (plane) to Latitude, Longitude (spheric) coordinates con
 		expect(expectedElfin1Swiss.x).toEqual(elfin1BasePoint.X);
 		expect(expectedElfin1Swiss.y).toEqual(elfin1BasePoint.Y);
 	});
+	
+	
+	it('hbGeoService.getElByPos - `elfin1.FORME.POINT` at POS=4 ', function() {
+		
+		var expectedElfin1FormePointPos4 = {
+				x : 561458.0512695312,
+				y : 204771.6516418457
+		}
+
+		var elfin1FormePointPos4 = hbGeoService.getElByPos(elfin1.FORME.POINT, "4");
+		
+		expect(expectedElfin1FormePointPos4.x).toEqual(elfin1FormePointPos4.X);
+		expect(expectedElfin1FormePointPos4.y).toEqual(elfin1FormePointPos4.Y);
+	});	
 	
 	
 	it('WARNING: precision loss: x: 36cm, y: 54cm ! point1 {x,y} should equal point1bis {x,y} in swiss federal coordinates.', function() {
