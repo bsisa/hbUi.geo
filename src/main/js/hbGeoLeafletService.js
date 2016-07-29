@@ -31,6 +31,8 @@
                    return null;
                }
 
+        	   // TODO: Move to POINT.{XG, YG, ZG}:  
+        	   // var coords = { lat : point.XG, lng : point.YG };
                var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
                var circleMarker = L.circleMarker(L.latLng(coords.lat, coords.lng), style);
                return circleMarker;
@@ -48,6 +50,8 @@
                    return null;
                }
 
+        	   // TODO: Move to POINT.{XG, YG, ZG}:  
+        	   // var coords = { lat : point.XG, lng : point.YG };
                var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
                var marker = L.marker(L.latLng(coords.lat, coords.lng), style);
            	   return marker;
@@ -62,6 +66,8 @@
         	   var points = hbGeoService.getElfinZone1Points(elfin);
         	   // Transform each GeoXml POINT to Leaflet L.latLng 
         	   var latLngs = _.map(points, function(point){
+            	   // TODO: Move to POINT.{XG, YG, ZG}:  
+            	   // var coords = { lat : point.XG, lng : point.YG };
         		   var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X,point.Y);
         		   return L.latLng(coords.lat, coords.lng); 
         		 });
@@ -207,6 +213,8 @@
                if (angular.isDefined(layer.setLatLng)) {
                    var point = hbGeoService.getElfinBasePoint(elfin);
                    if (point) {
+                	   // TODO: Move to POINT.{XG, YG, ZG}:  
+                	   // var coords = { lat : point.XG, lng : point.YG };
                        var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
                        layer.setLatLng(L.latLng(coords.lat, coords.lng));
                    }
