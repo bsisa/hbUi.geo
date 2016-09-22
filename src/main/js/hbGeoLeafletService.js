@@ -21,6 +21,16 @@
     	   // =================================================================           
            
     	   /**
+    	    * WARNING: Latitude, longitude and XG, YG are reversed...
+    	    */
+    	   var getLeafletPoint = function(geoxmlPoint) {
+    		   return {
+    			   lat : parseFloat(geoxmlPoint.YG),
+    			   lng : parseFloat(geoxmlPoint.XG)
+    		   };
+    	   };
+    	   
+    	   /**
     	    * Returns L.circleMarker for `elfin` base point translated swiss 
     	    * coordinates to latitudes, longitudes and `style`.
     	    */
@@ -32,8 +42,9 @@
                }
 
         	   // TODO: Move to POINT.{XG, YG, ZG}:  
-        	   // var coords = { lat : point.XG, lng : point.YG };
-               var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
+        	   //var coords = { lat : point.XG, lng : point.YG };
+        	   var coords = getLeafletPoint(point);
+               //var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
                var circleMarker = L.circleMarker(L.latLng(coords.lat, coords.lng), style);
                return circleMarker;
            };
@@ -51,8 +62,11 @@
                }
 
         	   // TODO: Move to POINT.{XG, YG, ZG}:  
-        	   // var coords = { lat : point.XG, lng : point.YG };
-               var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
+               var coords = getLeafletPoint(point);
+//        	   var coords2 = { lat : parseFloat(point.XG), lng : parseFloat(point.YG) };
+//               var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
+               //$log.debug("coords  = " + angular.toJson(coords));
+               //$log.debug("coords2 = " + angular.toJson(coords2));
                var marker = L.marker(L.latLng(coords.lat, coords.lng), style);
            	   return marker;
            };    	   
@@ -67,8 +81,9 @@
         	   // Transform each GeoXml POINT to Leaflet L.latLng 
         	   var latLngs = _.map(points, function(point){
             	   // TODO: Move to POINT.{XG, YG, ZG}:  
-            	   // var coords = { lat : point.XG, lng : point.YG };
-        		   var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X,point.Y);
+        		   var coords = getLeafletPoint(point);
+            	   //var coords = { lat : point.XG, lng : point.YG };
+        		   //var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X,point.Y);
         		   return L.latLng(coords.lat, coords.lng); 
         		 });
         	   return latLngs;
