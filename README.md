@@ -30,6 +30,7 @@ _Note the -g or --global option causes npm to install the package globally rathe
 
 Additional project dependencies require installing further grunt plugins in local:
 
+	npm install grunt-contrib-clean
 	npm install grunt-contrib-concat
 	npm install grunt-contrib-uglify
 	npm install grunt-contrib-cssmin
