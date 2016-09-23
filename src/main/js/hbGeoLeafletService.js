@@ -229,8 +229,8 @@
                    var point = hbGeoService.getElfinBasePoint(elfin);
                    if (point) {
                 	   // TODO: Move to POINT.{XG, YG, ZG}:  
-                	   // var coords = { lat : point.XG, lng : point.YG };
-                       var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
+                	   var coords = getLeafletPoint(point);
+                       //var coords = hbGeoService.getLongitudeLatitudeCoordinates(point.X, point.Y);
                        layer.setLatLng(L.latLng(coords.lat, coords.lng));
                    }
                }
