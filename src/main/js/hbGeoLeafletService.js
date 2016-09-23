@@ -21,7 +21,7 @@
     	   // =================================================================           
            
     	   /**
-    	    * WARNING: Latitude, longitude and XG, YG are reversed...
+    	    * Reminder: XG => longitude and YG => latitude 
     	    */
     	   var getLeafletPoint = function(geoxmlPoint) {
     		   return {
